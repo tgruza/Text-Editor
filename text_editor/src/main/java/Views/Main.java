@@ -107,17 +107,13 @@ public class Main extends JFrame {
         menuSearchButton.add(previousMenuButton);
     }
     public void show(JFrame frame) {
-
-        frame = this;
-        Main mainView = this;
-
         frame.setTitle("Text Editor");
         File file = new File("");
         ImageIcon imageIcon = new ImageIcon(file.getAbsolutePath() + "\\src\\main\\resources\\2.png");
         frame.setIconImage(imageIcon.getImage());
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(mainView.panel1);
+        frame.setContentPane(panel1);
 
         frame.setSize(800, 500);
 
