@@ -9,11 +9,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+//Class which implements method from IService interface
 public class ServiceImpl implements IService {
     private File file;
     private List<Integer> listOfIndexes = new ArrayList<>();
     private int counter = 0;
 
+    // Method takes path from first attribute, and saves text from second attribute to new file
     @Override
     public void saveFile(String path, Views.Main mainView) {
         try {
@@ -37,6 +39,7 @@ public class ServiceImpl implements IService {
         }
     }
 
+    //Method takes path from first attribute, and open .txt file
     @Override
     public void loadFile(String path, Views.Main mainView) {
         try {
@@ -51,6 +54,7 @@ public class ServiceImpl implements IService {
     }
 
 
+    //Opens fileChooser Open Window, and allow user to select file. Then method returns path to file
     @Override
     public String openChooseFile(File selectedFile) {
         JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -65,6 +69,7 @@ public class ServiceImpl implements IService {
         return selectedFile.getAbsolutePath();
     }
 
+    //Opens fileChooser Save Window, and allow user to select file. Then method returns path to file
     @Override
     public String saveChooseFile(File selectedFile) {
         JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -79,7 +84,7 @@ public class ServiceImpl implements IService {
         return selectedFile.getAbsolutePath();
     }
 
-
+    //Allows user to search a word from first attribute in text, saves all matches in List
     @Override
     public void searchWord(String word, JTextArea textArea) {
         if (word.isEmpty()) {
@@ -106,6 +111,7 @@ public class ServiceImpl implements IService {
         }
     }
 
+    //Methods chooses next math for searched word
     @Override
     public void nextSearch(String word, JTextArea textArea) {
         if (listOfIndexes.isEmpty() || counter == listOfIndexes.size()) {
@@ -120,6 +126,7 @@ public class ServiceImpl implements IService {
 
     }
 
+    //Chooses previous math for searched word
     @Override
     public void previousSearch(String word, JTextArea textArea) {
         if (listOfIndexes.isEmpty() || counter == listOfIndexes.size()) {
@@ -133,6 +140,7 @@ public class ServiceImpl implements IService {
         textArea.grabFocus();
     }
 
+    //Counts all search words
     @Override
     public String countOfFoundWords(JLabel label) {
         if (listOfIndexes.isEmpty()) {

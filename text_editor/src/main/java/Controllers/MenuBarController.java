@@ -8,16 +8,11 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+//Menu Controller Class, adds Action Listeners to Menu Buttons
 public class MenuBarController extends MainController {
 
     public MenuBarController(Main mainView, IService service) {
         super(mainView, service);
-
-        mainView.setSaveButton(new setSaveButton());
-        mainView.setLoadButton(new setOpenButton());
-        mainView.setSearchButton(new setSearchButton());
-        mainView.setNextButton(new setNextButton());
-        mainView.setPreviousButton(new setPreviousButton());
 
         mainView.setSaveMenuButton(new setSaveMenuButton());
         mainView.setLoadMenuButton(new setOpenMenuButton());
@@ -27,6 +22,7 @@ public class MenuBarController extends MainController {
         mainView.setPreviousMenuButton(new setPreviousMenuButton());
     }
 
+    //Inner classes, which sets Action Listeners to Menu Buttons
     class setSaveMenuButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {

@@ -9,8 +9,11 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+//Main Controller class, which have logic to AppButtons
 public class MainController {
 
+
+    private static boolean alreadyExecuted = false; //ensures that Action Listeners to App Buttons execute only once
     Views.Main mainView;
     IService service;
     JFrame frame;
@@ -19,8 +22,18 @@ public class MainController {
     public MainController(Main mainView, IService service) {
         this.mainView = mainView;
         this.service = service;
+
+        if (!alreadyExecuted) {
+            mainView.setSaveButton(new setSaveButton());
+            mainView.setLoadButton(new setOpenButton());
+            mainView.setSearchButton(new setSearchButton());
+            mainView.setNextButton(new setNextButton());
+            mainView.setPreviousButton(new setPreviousButton());
+            alreadyExecuted = true;
+        }
     }
 
+    //Inner classes, which sets an Action Listeners to particular AppButtons
     class setSaveButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -99,7 +112,7 @@ public class MainController {
         }
     }
 
-
+    //PopUp windows, which prevent from overwrite files, loose text, or exit program for accident
     int savePopupConfirmationWindow() {
         return JOptionPane.showConfirmDialog(frame, "Do you want to overwrite file?", "Overwrite", JOptionPane.YES_NO_OPTION);
     }
@@ -110,10 +123,11 @@ public class MainController {
         return JOptionPane.showConfirmDialog(frame, "Do you want to exit? You'll loose your progress.", "Exit", JOptionPane.YES_NO_OPTION);
     }
 
-
+    //Shows Frame
     public void show(JFrame frame) {
         mainView.show(frame);
     }
+    //Shows Menu Bar
     public void showMenuBar(JFrame frame) { mainView.showMenuBar(frame);}
 
 

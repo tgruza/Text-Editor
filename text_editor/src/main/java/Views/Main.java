@@ -7,26 +7,31 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
+//Main class, which sets frame and controls view of an app
 public class Main extends JFrame {
 
+    private JFrame jFrame;
     private JPanel panel1;
-    private JButton saveButton;
-    private JTextField pathField;
-    private JButton loadButton;
     private JTextArea textField;
+    private JTextField pathField;
+    private JLabel wordsCounter;
+
+    //App Buttons
+    private JButton saveButton;
+    private JButton loadButton;
     private JButton searchButton;
     private JButton nextButton;
     private JButton previousButton;
-    private JLabel wordsCounter;
-    private JFrame jFrame;
 
+    //Menu Buttons
+        //File Menu Buttons
     private JMenuBar menuBarField;
     private JMenu menuFileButton,
             menuSearchButton;
     private JMenuItem saveMenuButton;
     private JMenuItem loadMenuButton;
     private JMenuItem exitMenuButton;
-
+        //Search Menu Buttons
     private JMenuItem searchMenuButton;
     private JMenuItem nextMenuButton;
     private JMenuItem previousMenuButton;
@@ -35,6 +40,7 @@ public class Main extends JFrame {
 
     public Main() {}
 
+    //Methods adds Action Listeners to AppButtons, which are used in Controller's constructor
     public void setSaveButton(ActionListener actionListener) {
         saveButton.addActionListener(actionListener);
     }
@@ -51,7 +57,7 @@ public class Main extends JFrame {
         previousButton.addActionListener(actionListener);
     }
 
-
+    //Methods adds Action Listeners to MenuBar buttons, which are used in MenuBarController
     public void setSaveMenuButton(ActionListener actionListener) { saveMenuButton.addActionListener(actionListener);}
     public void setLoadMenuButton(ActionListener actionListener) { loadMenuButton.addActionListener(actionListener);}
     public void setExitMenuButton(ActionListener actionListener) { exitMenuButton.addActionListener(actionListener);}
@@ -61,7 +67,7 @@ public class Main extends JFrame {
     public void setPreviousMenuButton(ActionListener actionListener) { previousMenuButton.addActionListener(actionListener);}
 
 
-
+    //Method sets and shows JMenuBar
     public void showMenuBar(JFrame frame) {
         menuBarField = new JMenuBar();
 
@@ -72,13 +78,11 @@ public class Main extends JFrame {
         menuBarField.add(menuFileButton);
 
         saveMenuButton = new JMenuItem("Save", KeyEvent.VK_S);
-        saveMenuButton.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_S, InputEvent.CTRL_MASK));
+        saveMenuButton.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
         menuFileButton.add(saveMenuButton);
 
         loadMenuButton = new JMenuItem("Load", KeyEvent.VK_O);
-        loadMenuButton.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_O, InputEvent.CTRL_MASK));
+        loadMenuButton.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
         menuFileButton.add(loadMenuButton);
 
         menuFileButton.addSeparator();
@@ -106,6 +110,8 @@ public class Main extends JFrame {
         previousMenuButton.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
         menuSearchButton.add(previousMenuButton);
     }
+
+    //Method sets and shows Frame
     public void show(JFrame frame) {
         frame.setTitle("Text Editor");
         File file = new File("");

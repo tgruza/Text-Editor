@@ -6,6 +6,8 @@ import Views.Main;
 
 import javax.swing.*;
 
+
+//Main class with main method to run the application
 public class MainWithUI {
 
     public static void main(String[] args) {
