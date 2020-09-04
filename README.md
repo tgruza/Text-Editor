@@ -1,4 +1,4 @@
-# HomeProjects
+# Text Editor
 Text Editor application
 
 You can open .txt file, save, overwrite selected text file.
