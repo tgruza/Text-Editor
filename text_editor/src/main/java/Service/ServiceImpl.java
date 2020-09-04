@@ -101,6 +101,7 @@ public class ServiceImpl implements IService {
             textArea.setCaretPosition(index + word.length());
             textArea.select(index, index + word.length());
             textArea.grabFocus();
+            listOfIndexes.add(index);
 
             while (index != -1) {
                 index = textArea.getText().indexOf(word, index + word.length());
@@ -146,6 +147,6 @@ public class ServiceImpl implements IService {
         if (listOfIndexes.isEmpty()) {
             return "Words found: 0/0";
         }
-        return "Words found: " + (counter + 2) + "/" + (listOfIndexes.size() + 1);
+        return "Words found: " + (counter + 1) + "/" + listOfIndexes.size();
     }
 }
