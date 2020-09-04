@@ -92,7 +92,7 @@ public class ServiceImpl implements IService {
         }
         listOfIndexes.clear();
         int index;
-        counter = -1;
+        counter = 0;
         String text = textArea.getText();
 
         if (text.contains(word)) {
